@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F67D12DE25014297002B62E3 /* ColorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67D12DD25014297002B62E3 /* ColorRow.swift */; };
 		F6C731BB24FD3F01007690FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C731BA24FD3F01007690FD /* AppDelegate.swift */; };
 		F6C731BD24FD3F01007690FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C731BC24FD3F01007690FD /* SceneDelegate.swift */; };
 		F6C731C024FD3F01007690FD /* Camera_Color_Copy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6C731BE24FD3F01007690FD /* Camera_Color_Copy.xcdatamodeld */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F67D12DD25014297002B62E3 /* ColorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRow.swift; sourceTree = "<group>"; };
 		F6C731B724FD3F01007690FD /* Camera Color Copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera Color Copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6C731BA24FD3F01007690FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6C731BC24FD3F01007690FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				F6C731CB24FD3F02007690FD /* Info.plist */,
 				F6C731BE24FD3F01007690FD /* Camera_Color_Copy.xcdatamodeld */,
 				F6C731C524FD3F02007690FD /* Preview Content */,
+				F67D12DD25014297002B62E3 /* ColorRow.swift */,
 			);
 			path = "Camera Color Copy";
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F67D12DE25014297002B62E3 /* ColorRow.swift in Sources */,
 				F6C731BB24FD3F01007690FD /* AppDelegate.swift in Sources */,
 				F6C731C024FD3F01007690FD /* Camera_Color_Copy.xcdatamodeld in Sources */,
 				F6C731C224FD3F01007690FD /* ContentView.swift in Sources */,
