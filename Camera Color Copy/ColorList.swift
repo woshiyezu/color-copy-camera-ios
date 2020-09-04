@@ -12,11 +12,11 @@ struct ColorList: View {
     var body: some View {
         NavigationView {
             List {
-                ColorRow()
-                ColorRow()
-                ColorRow()
-                ColorRow()
-                ColorRow()
+                ColorRow(hexColor: "#222222")
+                ColorRow(hexColor: "#333333")
+                ColorRow(hexColor: "#444444")
+                ColorRow(hexColor: "#555555")
+                ColorRow(hexColor: "#666666")
             }
             .navigationBarTitle(Text("History Color"))
         }

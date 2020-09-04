@@ -9,12 +9,14 @@
 import SwiftUI
 
 struct ColorRow: View {
+    var hexColor: String
+    
     var body: some View {
         HStack {
             Rectangle()
-                .fill(Color.red)
+                .fill(Color(hexColor.color))
                 .frame(width:100, height: 70)
-            Text("#111111")
+            Text(hexColor)
             Spacer()
         }
     }
@@ -22,7 +24,7 @@ struct ColorRow: View {
 
 struct ColorRow_Previews: PreviewProvider {
     static var previews: some View {
-        ColorRow()
+        ColorRow(hexColor: "#222222")
         .previewLayout(.fixed(width: 300, height: 70))
     }
 }

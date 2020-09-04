@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F67AEA6F25026CB100C88960 /* ColorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67AEA6E25026CB100C88960 /* ColorList.swift */; };
+		F67AEA71250276E300C88960 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67AEA70250276E300C88960 /* String+.swift */; };
 		F67D12DE25014297002B62E3 /* ColorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67D12DD25014297002B62E3 /* ColorRow.swift */; };
 		F6C731BB24FD3F01007690FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C731BA24FD3F01007690FD /* AppDelegate.swift */; };
 		F6C731BD24FD3F01007690FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C731BC24FD3F01007690FD /* SceneDelegate.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		F67AEA6E25026CB100C88960 /* ColorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorList.swift; sourceTree = "<group>"; };
+		F67AEA70250276E300C88960 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		F67D12DD25014297002B62E3 /* ColorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRow.swift; sourceTree = "<group>"; };
 		F6C731B724FD3F01007690FD /* Camera Color Copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera Color Copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6C731BA24FD3F01007690FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				F6C731C524FD3F02007690FD /* Preview Content */,
 				F67D12DD25014297002B62E3 /* ColorRow.swift */,
 				F67AEA6E25026CB100C88960 /* ColorList.swift */,
+				F67AEA70250276E300C88960 /* String+.swift */,
 			);
 			path = "Camera Color Copy";
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F67D12DE25014297002B62E3 /* ColorRow.swift in Sources */,
+				F67AEA71250276E300C88960 /* String+.swift in Sources */,
 				F6C731BB24FD3F01007690FD /* AppDelegate.swift in Sources */,
 				F6C731C024FD3F01007690FD /* Camera_Color_Copy.xcdatamodeld in Sources */,
 				F67AEA6F25026CB100C88960 /* ColorList.swift in Sources */,
