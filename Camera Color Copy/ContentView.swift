@@ -9,10 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    
     var body: some View {
         NavigationView {
-            NavigationLink("Go ColorList", destination: ColorList())
-                .navigationBarTitle(Text("Camera Color Copy"))
+            VStack {
+                Button("add"){
+                    let hexColor = HexColor(context: self.moc)
+                    hexColor.id = UUID()
+                    hexColor.code = "#556677"
+                    try? self.moc.save()
+                }
+            
+                NavigationLink("Go ColorList", destination: ColorList())
+                    .navigationBarTitle(Text("Camera Color Copy"))
+            }
         }
     }
 }

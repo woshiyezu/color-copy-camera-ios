@@ -1,24 +1,18 @@
-//
-//  ColorList.swift
-//  Camera Color Copy
-//
-//  Created by Teruhiko Tanaka on 2020/09/04.
-//  Copyright © 2020 Teruhiko Tanaka. All rights reserved.
-//
-
 import SwiftUI
 
 struct ColorList: View {
-    @State private var hexColors = ["#222222", "#333333", "#444444"]
     @State private var showingAlert = false
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: HexColor.entity(), sortDescriptors: []) var hexColors:
+    FetchedResults<HexColor>
     
     var body: some View {
         List {
             ForEach(hexColors, id: \.self) { hexColor in
-                ColorRow(hexColor: hexColor)
+                ColorRow(hexColor: hexColor.code!)
                     .onTapGesture {
                         self.showingAlert = true
-                        UIPasteboard.general.string = hexColor
+                        UIPasteboard.general.string = hexColor.code
                 }
             }
             .onDelete(perform: rowRemove)
@@ -30,7 +24,11 @@ struct ColorList: View {
     }
     
     func rowRemove(offsets: IndexSet) {
-        hexColors.remove(atOffsets: offsets)
+        for index in offsets {
+            let hexColor = hexColors[index]
+            self.moc.delete(hexColor)
+        }
+        try? self.moc.save()
     }
 }
 
