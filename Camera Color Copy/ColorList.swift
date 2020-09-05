@@ -12,25 +12,23 @@ struct ColorList: View {
     @State private var showingAlert = false
     
     var body: some View {
-        NavigationView {
-            List {
-                ColorRow(hexColor: "#222222")
+        List {
+            ColorRow(hexColor: "#222222")
                 .onTapGesture {
                     self.showingAlert = true
                     UIPasteboard.general.string = "#222222"
-                }
-                
-                ColorRow(hexColor: "#333333")
+            }
+            
+            ColorRow(hexColor: "#333333")
                 .onTapGesture {
                     self.showingAlert = true
                     UIPasteboard.general.string = "#333333"
-                }
             }
-            .alert(isPresented: $showingAlert) {
-                Alert(title: Text("\(UIPasteboard.general.string!) copied!!"))
-            }
-            .navigationBarTitle(Text("History Color"))
         }
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("\(UIPasteboard.general.string!) copied!!"))
+        }
+        .navigationBarTitle(Text("History Color"))
     }
 }
 
