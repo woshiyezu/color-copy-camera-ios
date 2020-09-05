@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            NavigationLink("Go ColorList.", destination: ColorList())
+            NavigationLink("Go ColorList", destination: ColorList())
                 .navigationBarTitle(Text("Camera Color Copy"))
         }
     }
