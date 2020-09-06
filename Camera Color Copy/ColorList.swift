@@ -3,8 +3,7 @@ import SwiftUI
 struct ColorList: View {
     @State private var showingAlert = false
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: HexColor.entity(), sortDescriptors: []) var hexColors:
-    FetchedResults<HexColor>
+    @FetchRequest(entity: HexColor.entity(), sortDescriptors: []) var hexColors: FetchedResults<HexColor>
     
     var body: some View {
         List {
