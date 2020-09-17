@@ -10,10 +10,31 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
+    @ObservedObject private var avFoundationViewModel = AVFoundationViewModel()
     
     var body: some View {
         NavigationView {
             VStack {
+                if avFoundationViewModel.image == nil {
+                    Spacer()
+
+                    ZStack(alignment: .bottom) {
+                        CALayerView(caLayer: avFoundationViewModel.previewLayer)
+
+                        Button(action: {
+                        }) {
+                            Image(systemName: "camera.circle.fill")
+                            .renderingMode(.original)
+                            .resizable()
+                            .frame(width: 80, height: 80, alignment: .center)
+                        }
+                        .padding(.bottom, 100.0)
+                    }.onAppear {
+                        self.avFoundationViewModel.startSession()
+                    }.onDisappear {
+                        self.avFoundationViewModel.endSession()
+                    }
+                }
                 Button("add"){
                     let hexColor = HexColor(context: self.moc)
                     hexColor.id = UUID()
