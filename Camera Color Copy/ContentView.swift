@@ -16,19 +16,13 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 if avFoundationViewModel.image == nil {
-                    Spacer()
 
-                    ZStack(alignment: .bottom) {
+                    ZStack(alignment: .center) {
                         CALayerView(caLayer: avFoundationViewModel.previewLayer)
 
-                        Button(action: {
-                        }) {
-                            Image(systemName: "camera.circle.fill")
-                            .renderingMode(.original)
-                            .resizable()
-                            .frame(width: 80, height: 80, alignment: .center)
-                        }
-                        .padding(.bottom, 100.0)
+                        Circle()
+                            .stroke(Color.blue, lineWidth: 3)
+                            .frame(width: 16, height: 16)
                     }.onAppear {
                         self.avFoundationViewModel.startSession()
                     }.onDisappear {
