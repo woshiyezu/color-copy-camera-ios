@@ -3,7 +3,7 @@ import UIKit
 
 extension String {
 
-var color: UIColor {
+  var color: UIColor {
     let hex = trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
 
     if #available(iOS 13, *) {

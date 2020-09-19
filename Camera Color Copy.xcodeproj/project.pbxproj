@@ -22,6 +22,7 @@
 		F6C731CA24FD3F02007690FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6C731C824FD3F02007690FD /* LaunchScreen.storyboard */; };
 		F6C731D524FD3F02007690FD /* Camera_Color_CopyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C731D424FD3F02007690FD /* Camera_Color_CopyTests.swift */; };
 		F6C731E024FD3F02007690FD /* Camera_Color_CopyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C731DF24FD3F02007690FD /* Camera_Color_CopyUITests.swift */; };
+		F6F8880B25166FD4007D979C /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8880A25166FD4007D979C /* UIImage+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		F6C731DB24FD3F02007690FD /* Camera Color CopyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Camera Color CopyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6C731DF24FD3F02007690FD /* Camera_Color_CopyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera_Color_CopyUITests.swift; sourceTree = "<group>"; };
 		F6C731E124FD3F02007690FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6F8880A25166FD4007D979C /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				F65FC2F52507CCC6002BDC92 /* AVFoundationViewModel.swift */,
 				F65FC2F72507CD79002BDC92 /* CALayerView.swift */,
 				F6B062D7251616C500CAC670 /* ColorMeter.swift */,
+				F6F8880A25166FD4007D979C /* UIImage+.swift */,
 			);
 			path = "Camera Color Copy";
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				F6C731BB24FD3F01007690FD /* AppDelegate.swift in Sources */,
 				F6C731C024FD3F01007690FD /* Camera_Color_Copy.xcdatamodeld in Sources */,
 				F67AEA6F25026CB100C88960 /* ColorList.swift in Sources */,
+				F6F8880B25166FD4007D979C /* UIImage+.swift in Sources */,
 				F6C731C224FD3F01007690FD /* ContentView.swift in Sources */,
 				F6C731BD24FD3F01007690FD /* SceneDelegate.swift in Sources */,
 			);

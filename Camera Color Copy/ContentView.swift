@@ -5,7 +5,6 @@
 //  Created by Teruhiko Tanaka on 2020/08/31.
 //  Copyright © 2020 Teruhiko Tanaka. All rights reserved.
 //
-
 import SwiftUI
 
 struct ContentView: View {
@@ -18,7 +17,7 @@ struct ContentView: View {
                 VStack {
                     ZStack(alignment: .center) {
                         CALayerView(caLayer: avFoundationViewModel.previewLayer)
-                        ColorMeter(hexColor: "#aaaaaa")
+                        ColorMeter(hexColor: avFoundationViewModel.colorCode ?? "#ffffff")
                             .padding(.top, -60)
                         Circle()
                             .stroke(Color.blue, lineWidth: 3)

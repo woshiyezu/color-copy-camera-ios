@@ -2,13 +2,15 @@ import UIKit
 import Combine
 import AVFoundation
 
-class AVFoundationViewModel: NSObject, ObservableObject {
+class AVFoundationViewModel: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, ObservableObject {
 
-    var previewLayer:CALayer!
+    var previewLayer: CALayer!
+    
+    @Published var colorCode: String?
 
     private let captureSession = AVCaptureSession()
 
-    private var capturepDevice:AVCaptureDevice!
+    private var capturepDevice: AVCaptureDevice!
 
     override init() {
         super.init()
@@ -39,7 +41,17 @@ class AVFoundationViewModel: NSObject, ObservableObject {
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         self.previewLayer = previewLayer
 
+        let dataOutput = AVCaptureVideoDataOutput()
+        dataOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String:kCVPixelFormatType_32BGRA]
+
+        if captureSession.canAddOutput(dataOutput) {
+            captureSession.addOutput(dataOutput)
+        }
+        
         captureSession.commitConfiguration()
+        
+        let queue = DispatchQueue(label: "FromF.github.com.AVFoundationSwiftUI.AVFoundation")
+        dataOutput.setSampleBufferDelegate(self, queue: queue)
     }
 
     func startSession() {
@@ -50,5 +62,27 @@ class AVFoundationViewModel: NSObject, ObservableObject {
     func endSession() {
         if !captureSession.isRunning { return }
         captureSession.stopRunning()
+    }
+    
+    // MARK: - AVCaptureVideoDataOutputSampleBufferDelegate
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        var newColorCode: String? = nil
+        
+        if let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) {
+            let ciimage : CIImage = CIImage(cvPixelBuffer: pixelBuffer)
+            let image : UIImage = self.convert(cmage: ciimage)
+            newColorCode = image.centerColor
+        }
+        
+        DispatchQueue.main.async {
+            self.colorCode = newColorCode
+        }
+    }
+    
+    private func convert(cmage:CIImage) -> UIImage {
+         let context:CIContext = CIContext.init(options: nil)
+         let cgImage:CGImage = context.createCGImage(cmage, from: cmage.extent)!
+         let image:UIImage = UIImage.init(cgImage: cgImage)
+         return image
     }
 }
