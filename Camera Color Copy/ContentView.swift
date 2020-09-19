@@ -13,31 +13,47 @@ struct ContentView: View {
     @ObservedObject private var avFoundationViewModel = AVFoundationViewModel()
     
     var body: some View {
-        NavigationView {
-            VStack {
-                if avFoundationViewModel.image == nil {
+        GeometryReader { bodyView in
+            NavigationView {
+                VStack {
+                    if avFoundationViewModel.image == nil {
 
-                    ZStack(alignment: .center) {
-                        CALayerView(caLayer: avFoundationViewModel.previewLayer)
+                        ZStack(alignment: .center) {
+                            CALayerView(caLayer: avFoundationViewModel.previewLayer)
 
-                        Circle()
-                            .stroke(Color.blue, lineWidth: 3)
-                            .frame(width: 16, height: 16)
-                    }.onAppear {
-                        self.avFoundationViewModel.startSession()
-                    }.onDisappear {
-                        self.avFoundationViewModel.endSession()
+                            Circle()
+                                .stroke(Color.blue, lineWidth: 3)
+                                .frame(width: 16, height: 16)
+                        }.onAppear {
+                            self.avFoundationViewModel.startSession()
+                        }.onDisappear {
+                            self.avFoundationViewModel.endSession()
+                        }
                     }
+                    HStack(spacing: 0) {
+                        Spacer()
+                            .frame(width: bodyView.size.width / 3)
+                        Button("COPY"){
+                            let hexColor = HexColor(context: self.moc)
+                            hexColor.id = UUID()
+                            hexColor.code = "#556677"
+                            try? self.moc.save()
+                        }
+                            .accentColor(Color.white)
+                            .frame(width: bodyView.size.width / 3, height: 40.0, alignment: .center)
+                            .background(Color.blue)
+                    
+                        NavigationLink(destination: ColorList()) {
+                            Image("History")
+                                .renderingMode(.original)
+                                .resizable()
+                                .frame(width: 26.0, height: 26.0)
+                        }
+                            .frame(width: bodyView.size.width / 3)
+                    }
+                        .frame(height: 50)
                 }
-                Button("add"){
-                    let hexColor = HexColor(context: self.moc)
-                    hexColor.id = UUID()
-                    hexColor.code = "#556677"
-                    try? self.moc.save()
-                }
-            
-                NavigationLink("Go ColorList", destination: ColorList())
-                    .navigationBarTitle(Text("Camera Color Copy"))
+                .navigationBarTitle(Text("Camera Color Copy"))
             }
         }
     }
