@@ -20,7 +20,8 @@ struct ContentView: View {
 
                         ZStack(alignment: .center) {
                             CALayerView(caLayer: avFoundationViewModel.previewLayer)
-
+                            ColorMeter(hexColor: "#aaaaaa")
+                                .padding(.top, -60)
                             Circle()
                                 .stroke(Color.blue, lineWidth: 3)
                                 .frame(width: 16, height: 16)
