@@ -16,20 +16,17 @@ struct ContentView: View {
         GeometryReader { bodyView in
             NavigationView {
                 VStack {
-                    if avFoundationViewModel.image == nil {
-
-                        ZStack(alignment: .center) {
-                            CALayerView(caLayer: avFoundationViewModel.previewLayer)
-                            ColorMeter(hexColor: "#aaaaaa")
-                                .padding(.top, -60)
-                            Circle()
-                                .stroke(Color.blue, lineWidth: 3)
-                                .frame(width: 16, height: 16)
-                        }.onAppear {
-                            self.avFoundationViewModel.startSession()
-                        }.onDisappear {
-                            self.avFoundationViewModel.endSession()
-                        }
+                    ZStack(alignment: .center) {
+                        CALayerView(caLayer: avFoundationViewModel.previewLayer)
+                        ColorMeter(hexColor: "#aaaaaa")
+                            .padding(.top, -60)
+                        Circle()
+                            .stroke(Color.blue, lineWidth: 3)
+                            .frame(width: 16, height: 16)
+                    }.onAppear {
+                        self.avFoundationViewModel.startSession()
+                    }.onDisappear {
+                        self.avFoundationViewModel.endSession()
                     }
                     HStack(spacing: 0) {
                         Spacer()

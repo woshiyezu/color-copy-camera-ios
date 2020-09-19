@@ -2,13 +2,9 @@ import UIKit
 import Combine
 import AVFoundation
 
-class AVFoundationViewModel: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, ObservableObject {
-
-    @Published var image: UIImage?
+class AVFoundationViewModel: NSObject, ObservableObject {
 
     var previewLayer:CALayer!
-
-    private var _takePhoto:Bool = false
 
     private let captureSession = AVCaptureSession()
 
@@ -18,10 +14,6 @@ class AVFoundationViewModel: NSObject, AVCaptureVideoDataOutputSampleBufferDeleg
         super.init()
 
         prepareCamera()
-    }
-
-    func takePhoto() {
-        _takePhoto = true
     }
 
     private func prepareCamera() {
@@ -47,17 +39,7 @@ class AVFoundationViewModel: NSObject, AVCaptureVideoDataOutputSampleBufferDeleg
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         self.previewLayer = previewLayer
 
-        let dataOutput = AVCaptureVideoDataOutput()
-        dataOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String:kCVPixelFormatType_32BGRA]
-
-        if captureSession.canAddOutput(dataOutput) {
-            captureSession.addOutput(dataOutput)
-        }
-
         captureSession.commitConfiguration()
-
-        let queue = DispatchQueue(label: "FromF.github.com.AVFoundationSwiftUI.AVFoundation")
-        dataOutput.setSampleBufferDelegate(self, queue: queue)
     }
 
     func startSession() {
@@ -68,32 +50,5 @@ class AVFoundationViewModel: NSObject, AVCaptureVideoDataOutputSampleBufferDeleg
     func endSession() {
         if !captureSession.isRunning { return }
         captureSession.stopRunning()
-    }
-
-    // MARK: - AVCaptureVideoDataOutputSampleBufferDelegate
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        if _takePhoto {
-            _takePhoto = false
-            if let image = getImageFromSampleBuffer(buffer: sampleBuffer) {
-                DispatchQueue.main.async {
-                    self.image = image
-                }
-            }
-        }
-    }
-
-    private func getImageFromSampleBuffer (buffer: CMSampleBuffer) -> UIImage? {
-        if let pixelBuffer = CMSampleBufferGetImageBuffer(buffer) {
-            let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-            let context = CIContext()
-
-            let imageRect = CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(pixelBuffer), height: CVPixelBufferGetHeight(pixelBuffer))
-
-            if let image = context.createCGImage(ciImage, from: imageRect) {
-                return UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .right)
-            }
-        }
-
-        return nil
     }
 }
