@@ -31,10 +31,14 @@ struct ContentView: View {
                         Spacer()
                             .frame(width: bodyView.size.width / 3)
                         Button("COPY"){
+                            let colorCode = avFoundationViewModel.colorCode ?? "#ffffff"
+                            
                             let hexColor = HexColor(context: self.moc)
                             hexColor.id = UUID()
-                            hexColor.code = "#556677"
+                            hexColor.code = colorCode
                             try? self.moc.save()
+                            
+                            UIPasteboard.general.string = colorCode
                         }
                             .accentColor(Color.white)
                             .frame(width: bodyView.size.width / 3, height: 40.0, alignment: .center)
