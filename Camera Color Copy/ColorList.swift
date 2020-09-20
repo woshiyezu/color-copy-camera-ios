@@ -13,11 +13,11 @@ struct ColorList: View {
                         self.showingAlert = true
                         UIPasteboard.general.string = hexColor.code
                 }
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("\(UIPasteboard.general.string!) copied!!"))
+                }
             }
             .onDelete(perform: rowRemove)
-        }
-        .alert(isPresented: $showingAlert) {
-            Alert(title: Text("\(UIPasteboard.general.string!) copied!!"))
         }
         .navigationBarTitle(Text("History Color"))
     }
